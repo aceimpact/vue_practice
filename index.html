@@ -10,11 +10,13 @@
 	</head>
 	<body>
 		<div id="app">
-			<button v-on:click="list.push(list.length+1)">追加</button>
+			<button v-on:click="order=!order">切り替え</button>
+			<transition-group tag="ul" class="list">
+				<li v-for="item in sortedList" v-bind:key="item.id">
+					{{ item.name }} {{ item.price }}円
+				</li>
+			</transition-group>
 		</div>
-		<ul>
-			<li v-for="item in list">{{ item }}</li>
-		</ul>
 
 		<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
 		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
